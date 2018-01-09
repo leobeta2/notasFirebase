@@ -15,8 +15,8 @@ export class HomePage {
   this.notes = notesService.getNotes();
   }
 
-  public goToDetail(){
-    this.navCtrl.push(DetailPage);
+  public goToDetail(id){
+    this.navCtrl.push(DetailPage, {id:id});
   }
 
 }
