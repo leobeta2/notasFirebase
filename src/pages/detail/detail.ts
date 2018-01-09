@@ -32,8 +32,28 @@ export class DetailPage {
   }
 
   addNote(){
-    //generamos el id
-    this.note.id =Date.now();
-    this.notesService.createNote(this.note)
+    if (this.id != 0) {
+      //estamos editando una nota
+      this.notesService.editNote(this.note);
+      alert('Nota editada con exito');
+      //me devuelve a la vista anterior
+      this.navCtrl.pop();
+    } else {
+      //generamos el id
+      this.note.id =Date.now();
+      this.notesService.createNote(this.note);
+      alert('Nota creada con exito');
+      //me devuelve a la vista anterior
+      this.navCtrl.pop();
+    }
+
+    
+  }
+
+  deleteNote(){
+    this.notesService.deleteNote(this.note);
+    alert('Nota eliminada con exito');
+      //me devuelve a la vista anterior
+      this.navCtrl.pop();
   }
 }
