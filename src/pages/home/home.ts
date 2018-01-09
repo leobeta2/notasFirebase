@@ -19,4 +19,9 @@ export class HomePage {
     this.navCtrl.push(DetailPage, {id:id});
   }
 
+  public createNote(){
+    //si nos llega un cero, siempre se trata de una nueva nota
+    this.navCtrl.push(DetailPage, {id:0});
+  }
+
 }

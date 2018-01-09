@@ -19,6 +19,11 @@ export class DetailPage {
   id = null;
   constructor(public navCtrl: NavController, public navParams: NavParams, public  notesService: NotesService) {
     this.id = navParams.get('id');
+    if (this.id != 0) {
+      this.note = this.notesService.getNote(this.id);
+
+    }
+
     this.note = this.notesService.getNote(this.id);
   }
 
@@ -26,4 +31,9 @@ export class DetailPage {
     console.log('ionViewDidLoad DetailPage');
   }
 
+  addNote(){
+    //generamos el id
+    this.note.id =Date.now();
+    this.notesService.createNote(this.note)
+  }
 }
