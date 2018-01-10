@@ -9,6 +9,19 @@ import { HomePage } from '../pages/home/home';
 import {NotesService} from "../services/notes.service";
 import {DetailPage} from "../pages/detail/detail";
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyCTkXDPp01rx95wrSL7jeNXCE2hQF14wVE",
+  authDomain: "notionic-7bd2a.firebaseapp.com",
+  databaseURL: "https://notionic-7bd2a.firebaseio.com",
+  storageBucket: "notionic-7bd2a.appspot.com",
+  messagingSenderId: '410939922568'
+};
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -17,7 +30,10 @@ import {DetailPage} from "../pages/detail/detail";
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -28,6 +44,7 @@ import {DetailPage} from "../pages/detail/detail";
   providers: [
     StatusBar,
     SplashScreen,
+    AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     NotesService
   ]
